@@ -1,3 +1,7 @@
-<p>
-  registrazione works!
-</p>
+<div class= "form-group">
+  <form [formGroup]="reg">
+    <p>Nome: </p><input [formControl]="reg.controls['nome']">
+  </form>
+
+<h4>Registrati!</h4>
+</div>
