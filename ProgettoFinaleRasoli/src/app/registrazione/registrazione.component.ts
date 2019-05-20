@@ -8,6 +8,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class RegistrazioneComponent implements OnInit {
   reg : FormGroup;
+  fs : any;
   constructor(fb : FormBuilder) {
     this.reg = fb.group(
       {
@@ -18,6 +19,7 @@ export class RegistrazioneComponent implements OnInit {
         email : ['', [Validators.required, Validators.email]]
       }
     )
+    
    }
 
   ngOnInit() {

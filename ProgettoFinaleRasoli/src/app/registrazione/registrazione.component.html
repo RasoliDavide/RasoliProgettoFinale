@@ -1,7 +1,13 @@
+
+
+<h4>Registrati!</h4>
 <div class= "form-group">
   <form [formGroup]="reg">
     <p>Nome: </p><input [formControl]="reg.controls['nome']">
+    <p>Cognome: </p><input [formControl]="reg.controls['cognome']">
+    <p>Username: </p><input [formControl]="reg.controls['username']">
+    <p>Password: </p><input type="password" [formControl]="reg.controls['password']">
+    <p>Email: </p><input type="email" [formControl]="reg.controls['email']">
+    <button type="submit">Iscriviti</button>
   </form>
-
-<h4>Registrati!</h4>
 </div>
