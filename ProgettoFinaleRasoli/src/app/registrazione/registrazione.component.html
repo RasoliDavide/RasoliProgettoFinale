@@ -2,12 +2,12 @@
 
 <h4>Registrati!</h4>
 <div class= "form-group">
-  <form [formGroup]="reg">
-    <p>Nome: </p><input [formControl]="reg.controls['nome']">
-    <p>Cognome: </p><input [formControl]="reg.controls['cognome']">
-    <p>Username: </p><input [formControl]="reg.controls['username']">
-    <p>Password: </p><input type="password" [formControl]="reg.controls['password']">
-    <p>Email: </p><input type="email" [formControl]="reg.controls['email']">
-    <button type="submit">Iscriviti</button>
+  <form [formGroup]="reg" (ngSubmit)="addUser()">
+    <p>Nome: </p><input [formControl]="reg.controls['nome']" class="form-control">
+    <p>Cognome: </p><input [formControl]="reg.controls['cognome']" class="form-control">
+    <p>Username: </p><input [formControl]="reg.controls['username']" class="form-control">
+    <p>Password: </p><input type="password" [formControl]="reg.controls['password']" class="form-control">
+    <p>Email: </p><input type="email" [formControl]="reg.controls['email']" class="form-control">
+    <button type="submit" class="btn btn-info">Iscriviti</button>
   </form>
 </div>

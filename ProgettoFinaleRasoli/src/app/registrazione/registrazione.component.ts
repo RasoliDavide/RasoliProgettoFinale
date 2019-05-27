@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-
+import {Utente} from '../user';
 @Component({
   selector: 'app-registrazione',
   templateUrl: './registrazione.component.html',
@@ -8,7 +8,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class RegistrazioneComponent implements OnInit {
   reg : FormGroup;
-  fs : any;
+  @Input() utenti : Utente[];
   constructor(fb : FormBuilder) {
     this.reg = fb.group(
       {
@@ -21,7 +21,18 @@ export class RegistrazioneComponent implements OnInit {
     )
     
    }
-
+   addUser()
+   {
+     if(this.reg.valid)
+     {
+       if(this.reg.controls['username'].value == "")
+       {
+         this.reg.controls['username'].setValue(this.reg.controls['nome'].value+this.reg.controls['cognome'].value)
+       }
+       this.utenti.push(new Utente(this.reg.controls['username'].value,this.reg.controls['password'].value,
+                        this.reg.controls['email'].value,this.reg.controls['nome'].value,this.reg.controls['cognome'].value,));
+     }
+   }
   ngOnInit() {
   }
 

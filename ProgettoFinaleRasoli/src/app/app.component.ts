@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
+import {Utente} from './user';
+import {DefUtenti} from './mock-utenti';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ProgettoFinaleRasoli';
+  utenti : Utente[] = DefUtenti;
+  constructor()
+  {
+  }
 }

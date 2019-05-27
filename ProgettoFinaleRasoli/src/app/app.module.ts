@@ -7,10 +7,14 @@ import {
   ReactiveFormsModule
  } from '@angular/forms';
 import { RegistrazioneComponent } from './registrazione/registrazione.component';
+import { VisuaUtentiComponent } from './visua-utenti/visua-utenti.component';
+import { BachecaComponent } from './bacheca/bacheca.component';
 @NgModule({
   declarations: [
     AppComponent,
-    RegistrazioneComponent
+    RegistrazioneComponent,
+    VisuaUtentiComponent,
+    BachecaComponent
   ],
   imports: [
     BrowserModule,
