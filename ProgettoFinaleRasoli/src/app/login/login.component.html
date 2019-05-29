@@ -1,0 +1,7 @@
+<div class="form-group">
+  <form [formGroup]="formLog" (ngSubmit)="login()">
+    <p>Email</p> <input type="email" class="form-control" [formControl]="formLog.controls['email']">
+    <p>Password</p> <input type="password" class="form-control" [formControl]="formLog.controls['password']">
+    <button class="btn btn-info" type="submit">Login</button>
+  </form>
+</div>

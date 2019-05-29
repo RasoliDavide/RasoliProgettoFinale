@@ -9,7 +9,25 @@ import {DefUtenti} from './mock-utenti';
 export class AppComponent {
   title = 'ProgettoFinaleRasoli';
   utenti : Utente[] = DefUtenti;
+  loggedUser: Utente = null;
+  showLogin : Boolean = false;
+  showReg : Boolean = false;
   constructor()
   {
+
+  }
+  triggerReg()
+  {
+    this.showReg = !this.showReg;
+    this.showLogin = false;
+  }
+  triggerLogin()
+  {
+    this.showLogin = !this.showLogin;
+    this.showReg = false;
+  }
+  stampaUtenteLoggato()
+  {
+    console.log(this.loggedUser);
   }
 }

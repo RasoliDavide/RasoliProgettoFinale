@@ -6,8 +6,14 @@
     <p>Nome: </p><input [formControl]="reg.controls['nome']" class="form-control">
     <p>Cognome: </p><input [formControl]="reg.controls['cognome']" class="form-control">
     <p>Username: </p><input [formControl]="reg.controls['username']" class="form-control">
+    <div class="alert alert-danger" *ngIf="usrTrovato" role="alert">
+      Username già usato
+    </div>
     <p>Password: </p><input type="password" [formControl]="reg.controls['password']" class="form-control">
     <p>Email: </p><input type="email" [formControl]="reg.controls['email']" class="form-control">
+    <div class="alert alert-danger" *ngIf="mailTrovato" role="alert">
+      Email già usata
+    </div>
     <button type="submit" class="btn btn-info">Iscriviti</button>
   </form>
 </div>

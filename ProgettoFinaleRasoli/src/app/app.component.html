@@ -1,5 +1,18 @@
 <div class="row">
+
     <div class="col-sm-1"></div>
-    <app-registrazione class="col-sm-5" [utenti]="utenti"></app-registrazione>
-    <app-visua-utenti class="col-sm-5" [utenti]="utenti"></app-visua-utenti>
+    <div class="col-sm-5">
+        <div class="col-sm-12 row">
+            <button class="btn btn-info" (click)="triggerLogin()">Login</button>
+            <div class="col-sm-2"></div>
+            <button class="btn btn-info" (click)="triggerReg()">Registrati</button>
+        </div>
+        <app-registrazione class="col-sm-12" [utenti]="utenti" *ngIf="showReg"></app-registrazione>
+        <app-login class="col-sm-12" *ngIf="showLogin && !loggedUser" [loggedUser]=loggedUser [utenti]="utenti"></app-login>
+    </div>
+    
+    <div class="col-sm-2"></div>
+    <app-visua-utenti class="col-sm-4" [utenti]="utenti"></app-visua-utenti>
+    
 </div>
+<button (click)="stampaUtenteLoggato()">Debug</button>

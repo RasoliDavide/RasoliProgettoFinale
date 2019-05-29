@@ -9,12 +9,14 @@ import {
 import { RegistrazioneComponent } from './registrazione/registrazione.component';
 import { VisuaUtentiComponent } from './visua-utenti/visua-utenti.component';
 import { BachecaComponent } from './bacheca/bacheca.component';
+import { LoginComponent } from './login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
     RegistrazioneComponent,
     VisuaUtentiComponent,
-    BachecaComponent
+    BachecaComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

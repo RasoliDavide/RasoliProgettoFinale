@@ -1,0 +1,38 @@
+import { Component, OnInit, Input } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Utente } from '../user';
+
+@Component({
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
+})
+export class LoginComponent implements OnInit {
+  @Input() loggedUser : Utente;
+  @Input() utenti : Utente[];
+  formLog : FormGroup;
+  constructor(fb : FormBuilder) { 
+    this.formLog = fb.group(
+      {
+        email : ['', [Validators.required, Validators.email]],
+        password : ['', Validators.required]
+      }
+    )
+  }
+  login()
+  {
+    for(let i = 0; i < this.utenti.length; i++)
+    {
+      if(this.formLog.controls['email'].value == this.utenti[i].email &&
+        this.formLog.controls['password'].value == this.utenti[i].password)
+      {
+        this.loggedUser = this.utenti[i];
+        console.log(this.loggedUser);
+        break;
+      }
+    }
+  }
+  ngOnInit() {
+  }
+
+}

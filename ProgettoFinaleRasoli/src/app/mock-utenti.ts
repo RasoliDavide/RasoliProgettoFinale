@@ -4,14 +4,14 @@ export const DefUtenti = [
         username : "Admin",
         password : "Admin",
         email  : "Admin@Admin.it",
-        nome : "Pino",
-        cognome : "il sistemista"
+        nome : "Amministratore",
+        cognome : "del sistema"
     },
     {
-        username : "TommasoSenzaNaso",
+        username : "Tom",
         password : "Qwerty123",
-        email  : "Tommaso123@email.it",
+        email  : "Tom123@email.it",
         nome : "Tommaso",
-        cognome : "il computer"
+        cognome : "Rossi"
     },
 ]

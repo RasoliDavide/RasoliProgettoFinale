@@ -8,6 +8,8 @@ import {Utente} from '../user';
 })
 export class RegistrazioneComponent implements OnInit {
   reg : FormGroup;
+  usrTrovato : Boolean;
+  mailTrovato : Boolean;
   @Input() utenti : Utente[];
   constructor(fb : FormBuilder) {
     this.reg = fb.group(
@@ -23,14 +25,26 @@ export class RegistrazioneComponent implements OnInit {
    }
    addUser()
    {
+
      if(this.reg.valid)
      {
+       this.mailTrovato = false;
+       this.usrTrovato = false;
        if(this.reg.controls['username'].value == "")
+        this.reg.controls['username'].setValue(this.reg.controls['nome'].value+this.reg.controls['cognome'].value);
+       
+       for(let i = 0; i < this.utenti.length; i++)
        {
-         this.reg.controls['username'].setValue(this.reg.controls['nome'].value+this.reg.controls['cognome'].value)
+         if(this.utenti[i].email == this.reg.controls['email'].value)
+          this.mailTrovato = true;
+        
+         if(this.utenti[i].username == this.reg.controls['username'].value)
+          this.usrTrovato = true;
        }
-       this.utenti.push(new Utente(this.reg.controls['username'].value,this.reg.controls['password'].value,
-                        this.reg.controls['email'].value,this.reg.controls['nome'].value,this.reg.controls['cognome'].value,));
+       
+       if(!this.mailTrovato && !this.usrTrovato)
+        this.utenti.push(new Utente(this.reg.controls['username'].value,this.reg.controls['password'].value,
+                        this.reg.controls['email'].value,this.reg.controls['nome'].value,this.reg.controls['cognome'].value));
      }
    }
   ngOnInit() {
