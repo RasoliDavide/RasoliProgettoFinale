@@ -26,6 +26,10 @@ export class AppComponent {
     this.showLogin = !this.showLogin;
     this.showReg = false;
   }
+  logout()
+  {
+    this.loggedUser = null;
+  }
   setUtenteLoggato(u : Utente)
   {
     this.loggedUser = u;

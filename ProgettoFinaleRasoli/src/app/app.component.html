@@ -1,17 +1,18 @@
-<div class="row">
-    <button class="btn btn-info logButton" (click)="triggerLogin()">Login</button>
-    <button class="btn btn-info logButton" (click)="triggerReg()">Registrati</button>
+<div class="col-sm-12">
+    <button class="btn btn-info logButton" *ngIf="!loggedUser" (click)="triggerLogin()">Login</button>
+    <button class="btn btn-info logButton" *ngIf="!loggedUser" (click)="triggerReg()">Registrati</button>
+    <label *ngIf="loggedUser">Loggato come: {{loggedUser.username}}</label>
+    <button class="btn btn-danger float-right" *ngIf="loggedUser" (click)="logout()">Logout</button>
 </div>
 <div class="row">
 
     <div class="col-sm-1"></div>
     <div class="col-sm-5">
         <app-registrazione class="col-sm-12" [utenti]="utenti" *ngIf="showReg"></app-registrazione>
-        <app-login class="col-sm-12" *ngIf="showLogin" (userLogin)="setUtenteLoggato($event)" [loggedUser]="loggedUser" [utenti]="utenti"></app-login>
+        <app-login class="col-sm-12" *ngIf="showLogin && !loggedUser" (userLogin)="setUtenteLoggato($event)" [loggedUser]="loggedUser" [utenti]="utenti"></app-login>
     </div>
     
     <div class="col-sm-2"></div>
     <app-visua-utenti class="col-sm-4" [utenti]="utenti"></app-visua-utenti>
     
 </div>
-<button (click)="stampaUtenteLoggato()">Debug</button>
