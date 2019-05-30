@@ -5,11 +5,19 @@ export class Utente
     email : String;
     nome : String;
     cognome: String;
+    constructor()
+
     constructor(username : String,
         password : String,
         email : String,
         nome : String,
         cognome: String)
+
+    constructor(username? : String,
+        password? : String,
+        email? : String,
+        nome? : String,
+        cognome?: String)
         {
             this.username = username;
             this.password = password;

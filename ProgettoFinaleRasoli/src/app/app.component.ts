@@ -26,6 +26,10 @@ export class AppComponent {
     this.showLogin = !this.showLogin;
     this.showReg = false;
   }
+  setUtenteLoggato(index : number)
+  {
+    this.loggedUser = this.utenti[index];
+  }
   stampaUtenteLoggato()
   {
     console.log(this.loggedUser);

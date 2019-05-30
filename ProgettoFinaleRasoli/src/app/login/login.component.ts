@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Utente } from '../user';
 
@@ -10,6 +10,7 @@ import { Utente } from '../user';
 export class LoginComponent implements OnInit {
   @Input() loggedUser : Utente;
   @Input() utenti : Utente[];
+  @Output() userLogin = new EventEmitter<number>();
   formLog : FormGroup;
   constructor(fb : FormBuilder) { 
     this.formLog = fb.group(
@@ -27,6 +28,7 @@ export class LoginComponent implements OnInit {
         this.formLog.controls['password'].value == this.utenti[i].password)
       {
         this.loggedUser = this.utenti[i];
+        this.userLogin.emit(i);
         console.log(this.loggedUser);
         break;
       }
