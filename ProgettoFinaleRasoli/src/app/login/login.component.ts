@@ -10,7 +10,7 @@ import { Utente } from '../user';
 export class LoginComponent implements OnInit {
   @Input() loggedUser : Utente;
   @Input() utenti : Utente[];
-  @Output() userLogin = new EventEmitter<number>();
+  @Output() userLogin = new EventEmitter<Utente>();
   formLog : FormGroup;
   constructor(fb : FormBuilder) { 
     this.formLog = fb.group(
@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
         this.formLog.controls['password'].value == this.utenti[i].password)
       {
         this.loggedUser = this.utenti[i];
-        this.userLogin.emit(i);
+        this.userLogin.emit(this.loggedUser);
         console.log(this.loggedUser);
         break;
       }
