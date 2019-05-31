@@ -1,3 +1,20 @@
-<p>
-  bacheca works!
-</p>
+<button *ngIf="loggedUser">Pubblica nuovo post</button>
+<div class="form-group">
+  <form [formGroup]="postForm" (ngSubmit)="addAnnuncio()">
+    <strong>Titolo:</strong> <input class="form-control" [formControl]="postForm.controls['titolo']">
+    <p>Descrizione: </p> <input class="form-control" [formControl]="postForm.controls['descrizione']">
+    <button class="btn btn-info" type="submit">Aggiungi</button>
+  </form>
+</div>
+<div *ngFor="let viviana of viviane">
+  <p>Post di: {{viviana.username}} il giorno: {{viviana.data}}</p>
+  <h4>{{viviana.titolo}}</h4>
+  <p><strong>Descrizione:</strong><br>
+    {{viviana.descrizione}}</p>
+  <h6>Commenti: </h6>
+  <ul>
+    <li *ngFor="let com of viviana.risposte">
+      Di: {{com.username}} il: {{com.data}}<br>
+      {{com.testo}}</li>
+  </ul>
+</div>
