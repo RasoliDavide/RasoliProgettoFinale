@@ -12,6 +12,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class BachecaComponent implements OnInit {
   @Input() loggedUser : Utente;
   postForm : FormGroup;
+  postFormShow: Boolean = false;
   viviane : Annuncio[] = DefAnnunci;
   constructor(fb : FormBuilder) {
     this.postForm = fb.group(
@@ -28,9 +29,19 @@ export class BachecaComponent implements OnInit {
       let d = new Date();
       let data = d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear();
       let u = new Annuncio(this.loggedUser.username, data, this.postForm.controls['titolo'].value, 
-      this.postForm.controls['descrizione'].value, new Array<Commento>());
+                           this.postForm.controls['descrizione'].value, new Array<Commento>());
       this.viviane.push(u);
     }
+  }
+  triggerNewPostForm()
+  {
+      this.postFormShow = !this.postFormShow;
+  }
+  addComment(commenti : Commento[], text: HTMLInputElement)
+  {
+    let d = new Date();
+    let data = d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear();
+    commenti.push(new Commento(this.loggedUser.username, text.value, data));
   }
   ngOnInit() {
   }
