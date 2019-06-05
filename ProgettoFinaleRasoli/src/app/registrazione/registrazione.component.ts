@@ -10,6 +10,7 @@ export class RegistrazioneComponent implements OnInit {
   reg : FormGroup;
   usrTrovato : Boolean;
   mailTrovato : Boolean;
+  clicked : Boolean = false;
   @Input() utenti : Utente[];
   constructor(fb : FormBuilder) {
     this.reg = fb.group(
@@ -25,7 +26,7 @@ export class RegistrazioneComponent implements OnInit {
    }
    addUser()
    {
-
+      this.clicked = true;
      if(this.reg.valid)
      {
        this.mailTrovato = false;
@@ -47,6 +48,7 @@ export class RegistrazioneComponent implements OnInit {
                         this.reg.controls['email'].value,this.reg.controls['nome'].value,this.reg.controls['cognome'].value));
      }
    }
+
   ngOnInit() {
   }
 

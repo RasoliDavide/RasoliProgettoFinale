@@ -4,15 +4,30 @@
 <div class= "form-group">
   <form [formGroup]="reg" (ngSubmit)="addUser()">
     <p>Nome: </p><input [formControl]="reg.controls['nome']" class="form-control">
+    <div class="alert alert-danger" role="alert" *ngIf="clicked && reg.controls['nome'].hasError('required')">
+      Il nome è obbligatorio
+    </div>
     <p>Cognome: </p><input [formControl]="reg.controls['cognome']" class="form-control">
+    <div class="alert alert-danger" role="alert" *ngIf="clicked && reg.controls['cognome'].hasError('required')">
+      Il cognome è obbligatorio
+    </div>
     <p>Username: </p><input [formControl]="reg.controls['username']" class="form-control">
     <div class="alert alert-danger" *ngIf="usrTrovato" role="alert">
       Username già usato
     </div>
     <p>Password: </p><input type="password" [formControl]="reg.controls['password']" class="form-control">
+    <div class="alert alert-danger" role="alert" *ngIf="clicked && reg.controls['password'].hasError('required')">
+      La password è obbligatoria
+    </div>
     <p>Email: </p><input type="email" [formControl]="reg.controls['email']" class="form-control">
     <div class="alert alert-danger" *ngIf="mailTrovato" role="alert">
       Email già usata
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="clicked && reg.controls['email'].hasError('required')">
+      L'email è obbligatoria
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="clicked && reg.controls['email'].hasError('email')">
+      Inserire un'email corretta
     </div>
     <button type="submit" class="btn btn-info">Iscriviti</button>
   </form>

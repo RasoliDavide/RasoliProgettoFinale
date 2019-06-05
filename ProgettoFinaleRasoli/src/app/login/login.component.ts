@@ -11,6 +11,7 @@ export class LoginComponent implements OnInit {
   @Input() loggedUser : Utente;
   @Input() utenti : Utente[];
   @Output() userLogin = new EventEmitter<Utente>();
+  failed : boolean = false;
   formLog : FormGroup;
   constructor(fb : FormBuilder) { 
     this.formLog = fb.group(
@@ -33,6 +34,8 @@ export class LoginComponent implements OnInit {
         break;
       }
     }
+    this.failed = this.loggedUser == null;
+  
   }
   ngOnInit() {
   }
